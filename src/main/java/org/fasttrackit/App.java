@@ -24,6 +24,10 @@ public class App {
 
         System.out.println("Engine detail " + car.engine.manufacturer + ".");
 
+        double accelerateDistance = car.accelerate(60, 1);
+        System.out.println("Acceleration distance " + accelerateDistance);
+
+
 
     }
 }
