@@ -20,6 +20,8 @@ public class App {
         car.running = false;
         car.doorCount = 4;
 
+        Vehicle.totalCount = 2;
+
 
         System.out.println("Engine detail " + car.engine.manufacturer + ".");
 
