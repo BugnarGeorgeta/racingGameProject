@@ -15,15 +15,15 @@ public class Game {
     private int getNumberOfPlayers() {
         System.out.println("Please enter how many players do you want in this game: ");
         Scanner scanner = new Scanner(System.in);
-        int number = scanner.nextInt();
-        return number;
+        return scanner.nextInt();
+
     }
 
     private String getVehicleNameFromUser() {
         System.out.println("Please enter vehicle name:");
         Scanner scanner = new Scanner(System.in);
-        String name = scanner.nextLine();
-        return name;
+        return scanner.nextLine();
+
     }
 
 

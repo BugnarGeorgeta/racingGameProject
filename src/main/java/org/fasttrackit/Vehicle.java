@@ -4,16 +4,73 @@ public class Vehicle {
 
     static int totalCount;
 
-    String name;
-    String color;
-    double mileage;
-    double maxSpeed;
-    double fuelLevel;
-    boolean running;
-    double traveledDistance;
+    private String name;
+    private String color;
+    private double mileage;
+    private double maxSpeed;
+    private double fuelLevel;
+    private boolean running;
+    private double traveledDistance;
 
     public Vehicle() {
         totalCount++;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public double getMileage() {
+        return mileage;
+    }
+
+    public void setMileage(double mileage) {
+        this.mileage = mileage;
+    }
+
+    public double getMaxSpeed() {
+        return maxSpeed;
+    }
+
+    public void setMaxSpeed(double maxSpeed) {
+        this.maxSpeed = maxSpeed;
+    }
+
+    public double getFuelLevel() {
+        return fuelLevel;
+    }
+
+    public void setFuelLevel(double fuelLevel) {
+        this.fuelLevel = fuelLevel;
+    }
+
+    public boolean isRunning() {
+        return running;
+    }
+
+    public void setRunning(boolean running) {
+        this.running = running;
+    }
+
+    public double getTraveledDistance() {
+        return traveledDistance;
+    }
+
+    public void setTraveledDistance(double traveledDistance) {
+        this.traveledDistance = traveledDistance;
     }
 
     public double accelerate(double speed, double durationInHours) {
@@ -52,5 +109,7 @@ public class Vehicle {
         System.out.println("Fuel level " + fuelLevel + "l.");
 
         return distance;
+
+
     }
 }

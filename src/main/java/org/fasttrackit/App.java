@@ -10,23 +10,23 @@ public class App {
         game.start();
 
         Engine carEngine = new Engine();
-        carEngine.manufacturer = "Renault";
-        carEngine.capacity = 1.5;
+        carEngine.setManufacturer("Renault");
+        carEngine.setCapacity(1.5);
 
 
         Car car = new Car(carEngine);
-        car.name = "Dacia";
-        car.color = "red";
-        car.mileage = 9.8;
-        car.fuelLevel = 60;
-        car.maxSpeed = 200;
-        car.running = false;
-        car.doorCount = 4;
+        car.setName("Dacia");
+        car.setColor("red");
+        car.setMileage(9.8);
+        car.setFuelLevel(60);
+        car.setMaxSpeed(200);
+        car.setRunning(false);
+        car.setDoorCount(4);
 
         Vehicle.totalCount = 2;
 
 
-        System.out.println("Engine detail " + car.engine.manufacturer + ".");
+        System.out.println("Engine detail " + car.getEngine().getManufacturer() + ".");
 
         double accelerateDistance = car.accelerate(110, 1);
         System.out.println("Acceleration distance " + accelerateDistance);
