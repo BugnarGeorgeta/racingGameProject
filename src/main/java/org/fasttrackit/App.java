@@ -5,6 +5,7 @@ package org.fasttrackit;
  */
 public class App {
     public static void main(String[] args) {
+        
         System.out.println("Welcome to the Racing Game !");
         Game game = new Game();
         game.start();
@@ -24,6 +25,9 @@ public class App {
         car.setDoorCount(4);
 
         Vehicle.totalCount = 2;
+
+        Car car2 = new Car();
+        car2.setName("VW");
 
 
         System.out.println("Engine detail " + car.getEngine().getManufacturer() + ".");
