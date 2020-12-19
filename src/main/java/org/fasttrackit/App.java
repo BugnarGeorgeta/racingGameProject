@@ -10,6 +10,13 @@ public class App {
         Game game = new Game();
         game.start();
 
+        Joker joker = new Joker();
+        joker.setName("VW");
+        joker.setFuelLevel(80);
+        joker.accelerate(60,1);
+
+        System.out.println("Joker 's traveled distance " + joker.getTraveledDistance());
+
         Engine carEngine = new Engine();
         carEngine.setManufacturer("Renault");
         carEngine.setCapacity(1.5);
@@ -28,6 +35,8 @@ public class App {
 
         Car car2 = new Car();
         car2.setName("VW");
+
+
 
 
         System.out.println("Engine detail " + car.getEngine().getManufacturer() + ".");

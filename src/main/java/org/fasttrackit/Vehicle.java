@@ -102,6 +102,8 @@ public class Vehicle {
 
         traveledDistance += distance;
 
+        System.out.println("Traveled distance is " + traveledDistance + " km.");
+
         double usedFuel = distance * mileage * mileageMultiplier / 100;
         System.out.println("Used fuel " + usedFuel + "l.");
 
@@ -110,6 +112,18 @@ public class Vehicle {
 
         return distance;
 
+    }
 
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "name='" + name + '\'' +
+                ", color='" + color + '\'' +
+                ", mileage=" + mileage +
+                ", maxSpeed=" + maxSpeed +
+                ", fuelLevel=" + fuelLevel +
+                ", running=" + running +
+                ", traveledDistance=" + traveledDistance +
+                '}';
     }
 }
