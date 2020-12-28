@@ -1,6 +1,7 @@
 package org.fasttrackit;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
@@ -10,16 +11,50 @@ public class Game {
     private Track[] tracks = new Track[3];
     private List<Vehicle> competitors = new ArrayList<>();
 
-    public void start() {
+    public void start() throws Exception {
         System.out.println("Starting game.");
 
         initializeTracks();
         displayTraks();
+
+        Track selectedTrack = getSelectedTrackFromUser();
         initializecompetitors();
 
-        for (Vehicle vehicle : competitors)
+        for (Vehicle vehicle : competitors) {
             System.out.println("It's turn to " + vehicle.getName() + ".");
+            double speed = getAccelerationSpeedFromUser();
 
+            vehicle.accelerate(speed);
+
+            if (vehicle.getTraveledDistance() >= selectedTrack.getLength()) {
+                System.out.println("The winner is " + vehicle.getName() + "!");
+                break;
+            }
+
+        }
+    }
+
+    private double getAccelerationSpeedFromUser() {
+        System.out.println("Please enter acceleration speed");
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextDouble();
+    }
+
+
+    private Track getSelectedTrackFromUser() throws Exception {
+        System.out.println("Please select track number.");
+        Scanner scanner = new Scanner(System.in);
+        try {
+            int numberTrack = scanner.nextInt();
+
+            Track selectedTrack = tracks[numberTrack - 1];
+            System.out.println("Selected track is " + selectedTrack.getName());
+            return selectedTrack;
+        } catch (InputMismatchException e) {
+            throw new RuntimeException("You have entered an invalid value.");
+        }catch (ArrayIndexOutOfBoundsException e){
+            throw  new Exception("You have selected a non-existing track.");
+        }
 
     }
 
@@ -34,13 +69,13 @@ public class Game {
 
         Track track1 = new Track();
         track1.setName("SilverStone");
-        track1.setLength(4.5);
+        track1.setLength(45.5);
 
         tracks[0] = track1;
 
         Track track2 = new Track();
         track2.setName("Transilvania");
-        track2.setLength(4.7);
+        track2.setLength(400.7);
 
         tracks[1] = track2;
     }
@@ -57,20 +92,27 @@ public class Game {
     }
 
     private void initializecompetitors() {
+
         int numberOfPlayers = getNumberOfPlayers();
         System.out.println("In this game you have " + numberOfPlayers + " players.");
 
-        Vehicle vehicle = new Vehicle();
-        vehicle.setName(getVehicleNameFromUser());
-        vehicle.setFuelLevel(80);
-        vehicle.setMileage(ThreadLocalRandom.current().nextDouble(4.5, 10));
-        vehicle.setMaxSpeed(ThreadLocalRandom.current().nextDouble(200, 350));
+        for (int i = 0; i < numberOfPlayers; i++) {
+            System.out.println("Adding player ");
 
-        competitors.add(vehicle);
 
-        System.out.println(vehicle.getName() + " have mileage " + vehicle.getMileage() +
-                "km/h");
+            Vehicle vehicle = new Vehicle();
+            vehicle.setName(getVehicleNameFromUser());
+            vehicle.setFuelLevel(80);
+            vehicle.setMileage(ThreadLocalRandom.current().nextDouble(4.5, 10));
+            vehicle.setMaxSpeed(ThreadLocalRandom.current().nextDouble(200, 350));
 
+
+            System.out.println("Vehicle for player " + (i + 1) + ": " + vehicle.getName() + "  mileage "
+                    + vehicle.getMileage() + "km/h");
+
+            competitors.add(vehicle);
+
+        }
     }
 
     private String getVehicleNameFromUser() {

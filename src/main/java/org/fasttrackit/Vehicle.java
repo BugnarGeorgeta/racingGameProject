@@ -114,16 +114,21 @@ public class Vehicle {
 
     }
 
-    @Override
-    public String toString() {
-        return "Vehicle{" +
-                "name='" + name + '\'' +
-                ", color='" + color + '\'' +
-                ", mileage=" + mileage +
-                ", maxSpeed=" + maxSpeed +
-                ", fuelLevel=" + fuelLevel +
-                ", running=" + running +
-                ", traveledDistance=" + traveledDistance +
-                '}';
+    public double accelerate(double speed) {
+        return accelerate(speed, 1);
     }
-}
+
+        @Override
+        public String toString () {
+            return "Vehicle{" +
+                    "name='" + name + '\'' +
+                    ", color='" + color + '\'' +
+                    ", mileage=" + mileage +
+                    ", maxSpeed=" + maxSpeed +
+                    ", fuelLevel=" + fuelLevel +
+                    ", running=" + running +
+                    ", traveledDistance=" + traveledDistance +
+                    '}';
+        }
+    }
+
